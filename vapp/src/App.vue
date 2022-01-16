@@ -1,7 +1,5 @@
 <template>
-  <div v-if="isDrizzleInitialized" id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-
+  <div v-if="isDrizzleInitialized" id="app" class="max-w-7xl mx-auto mt-10">
     <div class="section">
       <h2>Show the Accounts</h2>
       <drizzle-account units="Ether" :precision="2" />
@@ -12,7 +10,9 @@
     </div>
   </div>
 
-  <div v-else>Loading...</div>
+  <div v-else>
+    <div>Loading</div>
+  </div>
 </template>
 
 <script>
@@ -28,12 +28,10 @@ export default {
 </script>
 
 <style>
-#app {
+body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #fafafa;
 }
 </style>
