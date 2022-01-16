@@ -2,19 +2,18 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-struct Record {
-    string title;
-    string artist;
-    string genre;
-    uint year;
-    uint price;
-    bool is_for_sale;
-    bytes32 fingerprint;
-    address payable holder;
-    string uri;
-}
-
 contract Audio {
+    struct Record {
+        string title;
+        string artist;
+        string genre;
+        uint year;
+        uint price;
+        bool is_for_sale;
+        bytes32 fingerprint;
+        address payable holder;
+        string uri;
+    }
     address private owner;
     mapping(bytes32 => Record) records;
 
