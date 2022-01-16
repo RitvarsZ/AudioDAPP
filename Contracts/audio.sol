@@ -10,7 +10,7 @@ struct Record {
     uint price;
     bool is_for_sale;
     bytes32 fingerprint;
-    address holder;
+    address payable holder;
     string uri;
 }
 
@@ -18,7 +18,13 @@ contract Audio {
     address private owner;
     mapping(bytes32 => Record) records;
 
-    // todo: events: https://docs.soliditylang.org/en/v0.8.11/contracts.html#events
+    event RecordUpdated(
+        Record record
+    );
+
+    event RecordRegistered(
+        Record record
+    );
 
     modifier onlyIfForSale(bytes32 key) {
         require(records[key].is_for_sale, "Record is not for sale");
@@ -54,35 +60,65 @@ contract Audio {
         string memory artist,
         string memory genre,
         uint year,
-        uint price,
+        uint price, // price in Wei
         bool is_for_sale,
         bytes32 fingerprint,
         string memory uri
     ) public {
-        require(records[fingerprint].holder != address(0), "Record already exists");
-        Record memory record = Record(title, artist, genre, year, price, is_for_sale, fingerprint, msg.sender, uri);
+        require(records[fingerprint].fingerprint != fingerprint, "Record already exists");
+
+        Record memory record = Record(title, artist, genre, year, price, is_for_sale, fingerprint, payable(msg.sender), uri);
         records[fingerprint] = record;
+
+        emit RecordRegistered(record);
+    }
+
+    /**
+        Get info about a record
+        @param key The fingerprint of the record to retrieve.
+     */
+    function getRecord(bytes32 key) public view returns (Record memory) {
+        Record memory record = records[key];
+
+        return record;
     }
 
     /**
         Buy a record.
         @param key The fingerprint of the record to buy.
      */
-    function buyRecord(bytes32 key) public onlyIfForSale(key) {
+    function buyRecord(bytes32 key) payable public onlyIfForSale(key) {
+        require(records[key].price == msg.value, "Invalid ammount supplied");
+
         Record memory record = records[key];
         record.is_for_sale = false;
-        record.holder = msg.sender;
+
+        record.holder.transfer(msg.value);
+
+        record.holder = payable(msg.sender);
         records[key] = record;
+
+        emit RecordUpdated(record);
     }
 
     /**
         Make the record available for purchase.
         @param key The fingerprint of the record to be made available.
      */
-    function sellRecord(bytes32 key) public isHolder(key, msg.sender) {
+    function setIsForSale(bytes32 key, bool status) public isHolder(key, msg.sender) {
         Record memory record = records[key];
-        record.is_for_sale = true;
+        record.is_for_sale = status;
         records[key] = record;
+
+        emit RecordUpdated(record);
+    }
+
+    function setPrice(bytes32 key, uint price) public isHolder(key, msg.sender) {
+        Record memory record = records[key];
+        record.price = price;
+        records[key] = record;
+
+        emit RecordUpdated(record);
     }
 
     /**
@@ -90,16 +126,12 @@ contract Audio {
         @param key The fingerprint of the record to get.
         @param new_holder The new holder of the record.
      */
-    function transferRecord(bytes32 key, address new_holder) public isHolder(key, msg.sender) {
+    function transferRecord(bytes32 key, address payable new_holder) public isHolder(key, msg.sender) {
         Record memory record = records[key];
         record.holder = new_holder;
         records[key] = record;
-    }
 
-    function setPrice(bytes32 key, uint price) public isHolder(key, msg.sender) {
-        Record memory record = records[key];
-        record.price = price;
-        records[key] = record;
+        emit RecordUpdated(record);
     }
 
     function getOwner() public view returns (address) {
