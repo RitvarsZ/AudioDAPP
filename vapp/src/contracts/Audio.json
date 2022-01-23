@@ -143,7 +143,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -257,7 +258,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -270,7 +272,8 @@
       "name": "buyRecord",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -337,7 +340,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"artist\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"genre\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_for_sale\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"fingerprint\",\"type\":\"bytes32\"},{\"internalType\":\"address payable\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"indexed\":false,\"internalType\":\"struct Audio.Record\",\"name\":\"record\",\"type\":\"tuple\"}],\"name\":\"RecordRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"artist\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"genre\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_for_sale\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"fingerprint\",\"type\":\"bytes32\"},{\"internalType\":\"address payable\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"indexed\":false,\"internalType\":\"struct Audio.Record\",\"name\":\"record\",\"type\":\"tuple\"}],\"name\":\"RecordUpdated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"}],\"name\":\"buyRecord\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"}],\"name\":\"getRecord\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"artist\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"genre\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_for_sale\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"fingerprint\",\"type\":\"bytes32\"},{\"internalType\":\"address payable\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"internalType\":\"struct Audio.Record\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"recordList\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"artist\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"genre\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"is_for_sale\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"fingerprint\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"name\":\"registerRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"status\",\"type\":\"bool\"}],\"name\":\"setIsForSale\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"setPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"},{\"internalType\":\"address payable\",\"name\":\"new_holder\",\"type\":\"address\"}],\"name\":\"transferRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyRecord(bytes32)\":{\"params\":{\"key\":\"The fingerprint of the record to buy.\"}},\"getRecord(bytes32)\":{\"params\":{\"key\":\"The fingerprint of the record to retrieve.\"}},\"registerRecord(string,string,string,uint256,uint256,bool,bytes32,string)\":{\"params\":{\"artist\":\"The artist of the record\",\"fingerprint\":\"The fingerprint of the record\",\"genre\":\"The genre of the record\",\"is_for_sale\":\"Whether the record is for sale\",\"price\":\"The price of the record\",\"title\":\"The title of the record\",\"year\":\"The year of the record\"}},\"setIsForSale(bytes32,bool)\":{\"params\":{\"key\":\"The fingerprint of the record to be made available.\"}},\"transferRecord(bytes32,address)\":{\"params\":{\"key\":\"The fingerprint of the record to get.\",\"new_holder\":\"The new holder of the record.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"buyRecord(bytes32)\":{\"notice\":\"Buy a record.\"},\"getRecord(bytes32)\":{\"notice\":\"Get info about a record\"},\"registerRecord(string,string,string,uint256,uint256,bool,bytes32,string)\":{\"notice\":\"Register a new record\"},\"setIsForSale(bytes32,bool)\":{\"notice\":\"Make the record available for purchase.\"},\"transferRecord(bytes32,address)\":{\"notice\":\"Transfer ownership of a record directly to another address.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Audio.sol\":\"Audio\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Audio.sol\":{\"keccak256\":\"0x832de9c492549b535782428e22009b640cb4ae29cfa0f58d3c72157bfa824ecd\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://b1cff8f042f785408965defc3208bfab4dd81525bc9586de24c32d089c2d12c6\",\"dweb:/ipfs/QmcPuSpcNqyxVEE2GFYDdtSqbzFSmdGehxiuCiqEvGr177\"]}},\"version\":1}",
@@ -17587,11 +17591,12 @@
       "events": {},
       "links": {},
       "address": "0x16c55dc8501F4D4861ff0992d8742C1E3Fc2a06C",
-      "transactionHash": "0xb5efb497ec31bb677e3755f3bf8cb36eaa5365676bc8bf4011e6fb6d8a9d6d21"
+      "transactionHash": "0x81e47d98f6a3b94b23ca4cd7d2e285f9f85e60a7394a1c891d51819201beaf76"
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-01-23T14:10:26.181Z",
+  "updatedAt": "2022-01-23T14:35:50.235Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

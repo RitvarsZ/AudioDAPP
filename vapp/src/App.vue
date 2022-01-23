@@ -16,7 +16,7 @@
       </div>
 
       <div class="bg-gray-100 p-6 pt-9 rounded-sm">
-      <drizzle-contract contractName="Audio" method="getAllRecords" />
+      <drizzle-contract contractName="Audio" method="getRecordList" />
       </div>
     </main>
 
