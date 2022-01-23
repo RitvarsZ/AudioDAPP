@@ -10,9 +10,11 @@
   "dependencies": {
     "@drizzle/store": "^1.5.0",
     "@drizzle/vue-plugin": "^0.1.0",
+    "js-sha256": "^0.9.0",
     "prettier": "^1.18.2",
     "vue": "^2.6.10",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
