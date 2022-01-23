@@ -15,6 +15,7 @@ contract Audio {
         string uri;
     }
     address private owner;
+    bytes32[] public recordList;
     mapping(bytes32 => Record) records;
 
     event RecordUpdated(
@@ -62,12 +63,14 @@ contract Audio {
         uint price, // price in Wei
         bool is_for_sale,
         bytes32 fingerprint,
-        string memory uri
+        string memory uri // ipfs link to the record
     ) public {
         require(records[fingerprint].fingerprint != fingerprint, "Record already exists");
 
         Record memory record = Record(title, artist, genre, year, price, is_for_sale, fingerprint, payable(msg.sender), uri);
         records[fingerprint] = record;
+
+        recordList.push(fingerprint);
 
         emit RecordRegistered(record);
     }
