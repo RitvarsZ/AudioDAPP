@@ -33,6 +33,7 @@ export default {
             uri: '',
             is_for_sale: '',
             fingerprint: '',
+            txStatus: '',
         }
     },
     computed: {
@@ -40,7 +41,7 @@ export default {
         ...mapGetters('drizzle', ['drizzleInstance']),
     },
     methods: {
-        registerRecord() {
+        async registerRecord() {
             this.drizzleInstance.contracts['Audio'].methods['registerRecord'].cacheSend(
                 this.title,
                 this.artist,
@@ -51,7 +52,6 @@ export default {
                 this.fingerprint,
                 this.uri                
             );
-
         },
         onFileChange(e) {
             const file = e.target.files[0];

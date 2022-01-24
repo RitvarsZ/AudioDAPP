@@ -984,12 +984,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xfA2F233ce4862CebAe3461745545015987b990B4",
-      "transactionHash": "0x65ac7fed0c0d46258de79d8a5f69df2b6416a2d870a95479cd298bd6f226120b"
+      "address": "0x737E1163ebA3ffe24BFA20345C5b4096C549e327",
+      "transactionHash": "0xd8c16bea6a440f6214a30ff68d77a2f9d8114a0116d65a0efb76d583bfd21300"
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-01-23T14:35:50.246Z",
+  "updatedAt": "2022-01-24T08:34:55.061Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

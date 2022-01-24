@@ -96,6 +96,7 @@ contract Audio {
      */
     function buyRecord(bytes32 key) payable public recordExists(key) onlyIfForSale(key) {
         require(records[key].price == msg.value, "Invalid ammount supplied");
+        require(records[key].holder != msg.sender, "Record is already owned by you");
 
         Record memory record = records[key];
         record.is_for_sale = false;

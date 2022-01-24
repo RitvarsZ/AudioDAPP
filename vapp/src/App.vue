@@ -16,7 +16,7 @@
       </div>
 
       <div class="bg-gray-100 p-6 pt-9 rounded-sm">
-      <drizzle-contract contractName="Audio" method="getRecordList" />
+      <record-list :key="componentKey" />
       </div>
     </main>
 
@@ -34,36 +34,34 @@
 <script>
 import { mapGetters } from 'vuex'
 import RegisterRecording from './components/RegisterRecording.vue'
+import RecordList from './components/RecordList.vue'
 
 export default {
   name: 'app',
   components: {
-    RegisterRecording
+    RegisterRecording,
+    RecordList,
   },
   computed: {
     ...mapGetters('drizzle', ['isDrizzleInitialized']),
     ...mapGetters('drizzle', ['drizzleInstance']),
   },
+  data() {
+    return {
+      componentKey: 0,
+    }
+  },
   mounted: function () {
     this.$drizzleEvents.$on('drizzle/contractEvent', payload => {
       const { eventName, data } = payload;
-      // Save record to store
-      if (eventName === 'RecordRegistered') {
-        const record = {
-          artist: data.record.artist,
-          title: data.record.title,
-          price: data.record.price,
-          year: data.record.year,
-          genre: data.record.genre,
-          uri: data.record.uri,
-          holder: data.record.holder,
-          is_for_sale: data.record.is_for_sale,
-          fingerprint: data.record.fingerprint,
-        }
-        this.$store.commit('addRecord', record);
-      }
+      this.forceRerender();
     });
-  }
+  },
+  methods: {
+    forceRerender() {
+      this.componentKey += 1;
+    },
+  },
 }
 </script>
 
